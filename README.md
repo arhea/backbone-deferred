@@ -7,7 +7,7 @@ This library converts models and collections to use the deferred pattern. So ins
 * jQuery
 
 ###API Changes
-This library assumes then when you save that you want to save all attributes.  So now when using the `save` method just pass an options hash.
+This library assumes that when you save that you want to save all attributes.  So now when using the `save` method just pass an options hash.
 
 ```javascript
 model.save();
