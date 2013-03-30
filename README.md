@@ -39,51 +39,51 @@ model.fetch().done(function(model, response, options) {
 ###Documentation
 
 **Backbone.DeferredModel.fetch(*options*)**
-*.done(model, response, options)
+* .done(model, response, options)
     * model - instance of the model
     * response - the response from the server
     * options - the options passed to the function
-*.fail(model, xhr, options)
+* .fail(model, xhr, options)
     * model - instance of the model
     * xhr - the jQXhr object
     * options - the options passed to the function
 
 **Backbone.DeferredModel.save(*key*, *val*, *options*)**
-*.done(model, response, options)
+* .done(model, response, options)
     * model - instance of the model
     * response - the response from the server
     * options - the options passed to the function
-*.fail(model, xhr, options)
+* .fail(model, xhr, options)
     * model - instance of the model
     * xhr - the jQXhr object
     * options - the options passed to the function
 
 **Backbone.DeferredModel.save(*attributes*, *options*)**
-*.done(model, response, options)
+* .done(model, response, options)
     * model - instance of the model
     * response - the response from the server
     * options - the options passed to the function
-*.fail(model, xhr, options)
+* .fail(model, xhr, options)
     * model - instance of the model
     * xhr - the jQXhr object
     * options - the options passed to the function
 
 **Backbone.DeferredModel.destroy(*options*)**
-*.done(model, response, options)
+* .done(model, response, options)
     * model - instance of the model
     * response - the response from the server
     * options - the options passed to the function
-*.fail(model, xhr, options)
+* .fail(model, xhr, options)
     * model - instance of the model
     * xhr - the jQXhr object
     * options - the options passed to the function
 
 **Backbone.DeferredCollection.fetch(*options*)**
-*.done(collection, response, options)
+* .done(collection, response, options)
     * collection - instance of the collection
     * response - the response from the server
     * options - the options passed to the function
-*.fail(model, xhr, options)
+* .fail(model, xhr, options)
     * collection - instance of the collection
     * xhr - the jQXhr object
     * options - the options passed to the function
