@@ -19,8 +19,10 @@ module.exports = function(grunt) {
 
 		uglify: {
 			options: {
-				banner: '/*! <%= pkg.name %> - v<%= pkg.version %> - ' +
-        			'<%= grunt.template.today("yyyy-mm-dd") %> */',
+				banner: '// <%= pkg.name %> <%= pkg.version %> \n' +
+				'// (c) <%= grunt.template.today("yyyy") %> Alex Rhea \n' +
+				'// backbone-deferred may be freely distributed under the MIT license. \n' +
+				'// <%= pkg.repository.url %> \n',
         		report: true
 		    },
 			src: {
