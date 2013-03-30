@@ -26,17 +26,26 @@
             return defer.promise();
         },
 
-        save: function(options) {
+        save: function(key, val, options) {
+            var attrs = {};
             options = options || {};
+
+            if(_.isObject(key)) {
+                attrs = key;
+            } else {
+                attrs[key] = val;
+            }
+
             var self = this;
             var defer = $.Deferred();
+
             var _success = null;
             var _error = null;
 
             if(options.success && _.isFunction(options.success)) { _success = options.success; }
             if(options.error && _.isFunction(options.error)) { _error = options.error; }
 
-            Backbone.Model.prototype.save.call(this, this.attributes, _.extend(options, {
+            Backbone.Model.prototype.save.call(this, attrs, _.extend(options, {
                 success: function(model, response, options) {
                     if(_success) { _success.apply(this, [model, response, options]); }
                     defer.resolveWith(this, [model, response, options]);

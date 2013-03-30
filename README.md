@@ -6,9 +6,6 @@ This library converts models and collections to use the deferred pattern. So ins
 * Underscore
 * jQuery
 
-###API Changes
-This library assumes that when you save that you want to save all attributes.  So now when using the `save` method just pass an options hash.
-
 ```javascript
 model.save();
 ```
@@ -38,3 +35,55 @@ model.fetch().done(function(model, response, options) {
     alert('Darn!');
 });
 ```
+
+###Documentation
+
+**Backbone.DeferredModel.fetch(*options*)**
+*.done(model, response, options)
+    * model - instance of the model
+    * response - the response from the server
+    * options - the options passed to the function
+*.fail(model, xhr, options)
+    * model - instance of the model
+    * xhr - the jQXhr object
+    * options - the options passed to the function
+
+**Backbone.DeferredModel.save(*key*, *val*, *options*)**
+*.done(model, response, options)
+    * model - instance of the model
+    * response - the response from the server
+    * options - the options passed to the function
+*.fail(model, xhr, options)
+    * model - instance of the model
+    * xhr - the jQXhr object
+    * options - the options passed to the function
+
+**Backbone.DeferredModel.save(*attributes*, *options*)**
+*.done(model, response, options)
+    * model - instance of the model
+    * response - the response from the server
+    * options - the options passed to the function
+*.fail(model, xhr, options)
+    * model - instance of the model
+    * xhr - the jQXhr object
+    * options - the options passed to the function
+
+**Backbone.DeferredModel.destroy(*options*)**
+*.done(model, response, options)
+    * model - instance of the model
+    * response - the response from the server
+    * options - the options passed to the function
+*.fail(model, xhr, options)
+    * model - instance of the model
+    * xhr - the jQXhr object
+    * options - the options passed to the function
+
+**Backbone.DeferredCollection.fetch(*options*)**
+*.done(collection, response, options)
+    * collection - instance of the collection
+    * response - the response from the server
+    * options - the options passed to the function
+*.fail(model, xhr, options)
+    * collection - instance of the collection
+    * xhr - the jQXhr object
+    * options - the options passed to the function
