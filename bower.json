@@ -1,0 +1,35 @@
+{
+  "name": "backbone-deferred",
+  "version": "0.2.0",
+  "homepage": "https://github.com/arhea/backbone-deferred",
+  "authors": [
+    "Alex Rhea <alex.rhea@gmail.com>"
+  ],
+  "description": "An implementation of Backbone Model and Collection using the promise pattern rather than passing callback options. Supports popular deferred libraries like Q and jquery.",
+  "main": "backbone-deferred-jquery.js",
+  "keywords": [
+    "jquery",
+    "backbone",
+    "plugin",
+    "q",
+    "promise",
+    "deferred"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "libs",
+    "tests",
+    "src",
+    "Gruntfile.js",
+    ".travis.yml",
+    ".bowerrc"
+  ],
+  "dependencies": {
+    "backbone": "~1.1.0",
+    "jquery": "~2.0.3",
+    "q": "~0.9.7",
+    "underscore": "~1.5.2"
+  }
+}
