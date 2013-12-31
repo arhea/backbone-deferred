@@ -47,7 +47,7 @@ config =
 
 module('collection', config)
 
-asyncTest 'fetch: ok response', () ->
+asyncTest 'fetch: deferred ok response', () ->
     expect 3
 
     deferred = @collection.fetch().then((result) ->
@@ -59,7 +59,7 @@ asyncTest 'fetch: ok response', () ->
 
     @respondOk()
 
-asyncTest 'fetch: bad response', () ->
+asyncTest 'fetch: deferred bad response', () ->
     expect 3
 
     @collection.fetch().then(null, (error) ->
@@ -68,5 +68,31 @@ asyncTest 'fetch: bad response', () ->
         ok(error instanceof Backbone.Deferred.RejectCollection, 'Make sure the arugment is a RejectCollection object.')
         start()
     )
+
+    @respondBad()
+
+asyncTest 'fetch: callback ok response', () ->
+    expect 2
+
+    options =
+        success: () ->
+            ok(true, 'Make sure the then callback was called.')
+            ok(arguments.length is 3, 'Make sure there is 3 arguments passed.')
+            start()
+
+    @collection.fetch(options)
+
+    @respondOk()
+
+asyncTest 'fetch: callback bad response', () ->
+    expect 2
+
+    options =
+        error: () ->
+            ok(true, 'Make sure the then callback was called.')
+            ok(arguments.length is 3, 'Make sure there is 3 arguments passed.')
+            start()
+
+    @collection.fetch(options)
 
     @respondBad()

@@ -52,7 +52,7 @@
 
   module('collection', config);
 
-  asyncTest('fetch: ok response', function() {
+  asyncTest('fetch: deferred ok response', function() {
     var deferred;
     expect(3);
     deferred = this.collection.fetch().then(function(result) {
@@ -64,7 +64,7 @@
     return this.respondOk();
   });
 
-  asyncTest('fetch: bad response', function() {
+  asyncTest('fetch: deferred bad response', function() {
     expect(3);
     this.collection.fetch().then(null, function(error) {
       ok(true, 'Make sure the then callback was called.');
@@ -72,6 +72,34 @@
       ok(error instanceof Backbone.Deferred.RejectCollection, 'Make sure the arugment is a RejectCollection object.');
       return start();
     });
+    return this.respondBad();
+  });
+
+  asyncTest('fetch: callback ok response', function() {
+    var options;
+    expect(2);
+    options = {
+      success: function() {
+        ok(true, 'Make sure the then callback was called.');
+        ok(arguments.length === 3, 'Make sure there is 3 arguments passed.');
+        return start();
+      }
+    };
+    this.collection.fetch(options);
+    return this.respondOk();
+  });
+
+  asyncTest('fetch: callback bad response', function() {
+    var options;
+    expect(2);
+    options = {
+      error: function() {
+        ok(true, 'Make sure the then callback was called.');
+        ok(arguments.length === 3, 'Make sure there is 3 arguments passed.');
+        return start();
+      }
+    };
+    this.collection.fetch(options);
     return this.respondBad();
   });
 
@@ -129,7 +157,7 @@
 
   module('model', config);
 
-  asyncTest('fetch: ok response', function() {
+  asyncTest('fetch: deferred ok response', function() {
     var deferred;
     expect(3);
     deferred = this.model.fetch().then(function(result) {
@@ -141,7 +169,7 @@
     return this.respondOk();
   });
 
-  asyncTest('fetch: bad response', function() {
+  asyncTest('fetch: deferred bad response', function() {
     expect(3);
     this.model.fetch().then(null, function(error) {
       ok(true, 'Make sure the then callback was called.');
@@ -152,7 +180,35 @@
     return this.respondBad();
   });
 
-  asyncTest('save: ok response', function() {
+  asyncTest('fetch: callback ok response', function() {
+    var options;
+    expect(2);
+    options = {
+      success: function() {
+        ok(true, 'Make sure the then callback was called.');
+        ok(arguments.length === 3, 'Make sure there is 3 arguments passed.');
+        return start();
+      }
+    };
+    this.model.fetch(options);
+    return this.respondOk();
+  });
+
+  asyncTest('fetch: callback bad response', function() {
+    var options;
+    expect(2);
+    options = {
+      error: function() {
+        ok(true, 'Make sure the then callback was called.');
+        ok(arguments.length === 3, 'Make sure there is 3 arguments passed.');
+        return start();
+      }
+    };
+    this.model.fetch(options);
+    return this.respondBad();
+  });
+
+  asyncTest('save: deferred ok response', function() {
     var deferred;
     expect(3);
     deferred = this.model.save().then(function(result) {
@@ -164,7 +220,7 @@
     return this.respondOk();
   });
 
-  asyncTest('save: bad response', function() {
+  asyncTest('save: deferred bad response', function() {
     expect(3);
     this.model.save().then(null, function(error) {
       ok(true, 'Make sure the then callback was called.');
@@ -175,7 +231,64 @@
     return this.respondBad();
   });
 
-  asyncTest('destroy: ok response', function() {
+  asyncTest('save: callback ok response', function() {
+    var options;
+    expect(2);
+    options = {
+      success: function() {
+        ok(true, 'Make sure the then callback was called.');
+        ok(arguments.length === 3, 'Make sure there is 3 arguments passed.');
+        return start();
+      }
+    };
+    this.model.save(null, null, options);
+    return this.respondOk();
+  });
+
+  asyncTest('save: callback bad response', function() {
+    var options;
+    expect(2);
+    options = {
+      error: function() {
+        ok(true, 'Make sure the then callback was called.');
+        ok(arguments.length === 3, 'Make sure there is 3 arguments passed.');
+        return start();
+      }
+    };
+    this.model.save(null, null, options);
+    return this.respondBad();
+  });
+
+  asyncTest('save: backbone api pass object', function() {
+    var options, params;
+    expect(1);
+    params = {
+      sample: 'sample'
+    };
+    options = {
+      success: function(model) {
+        ok(model.get('sample') === 'sample', 'make sure the data passed was said.');
+        return start();
+      }
+    };
+    this.model.save(params, options);
+    return this.respondOk();
+  });
+
+  asyncTest('save: backbone api pass key and value', function() {
+    var options;
+    expect(1);
+    options = {
+      success: function(model) {
+        ok(model.get('sample') === 'sample', 'make sure the data passed was said.');
+        return start();
+      }
+    };
+    this.model.save('sample', 'sample', options);
+    return this.respondOk();
+  });
+
+  asyncTest('destroy: deferred ok response', function() {
     var deferred;
     expect(3);
     deferred = this.model.destroy().then(function(result) {
@@ -187,7 +300,7 @@
     return this.respondOk();
   });
 
-  asyncTest('destroy: bad response', function() {
+  asyncTest('destroy: deferred bad response', function() {
     expect(3);
     this.model.destroy().then(null, function(error) {
       ok(true, 'Make sure the then callback was called.');
@@ -195,6 +308,34 @@
       ok(error instanceof Backbone.Deferred.RejectModel, 'Make sure the arugment is a RejectModel object.');
       return start();
     });
+    return this.respondBad();
+  });
+
+  asyncTest('destroy: callback ok response', function() {
+    var options;
+    expect(2);
+    options = {
+      success: function() {
+        ok(true, 'Make sure the then callback was called.');
+        ok(arguments.length === 3, 'Make sure there is 3 arguments passed.');
+        return start();
+      }
+    };
+    this.model.destroy(options);
+    return this.respondOk();
+  });
+
+  asyncTest('destroy: callback bad response', function() {
+    var options;
+    expect(2);
+    options = {
+      error: function() {
+        ok(true, 'Make sure the then callback was called.');
+        ok(arguments.length === 3, 'Make sure there is 3 arguments passed.');
+        return start();
+      }
+    };
+    this.model.destroy(options);
     return this.respondBad();
   });
 

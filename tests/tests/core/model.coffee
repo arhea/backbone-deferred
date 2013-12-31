@@ -44,7 +44,7 @@ config =
 
 module('model', config)
 
-asyncTest 'fetch: ok response', () ->
+asyncTest 'fetch: deferred ok response', () ->
     expect 3
 
     deferred = @model.fetch().then((result) ->
@@ -56,7 +56,7 @@ asyncTest 'fetch: ok response', () ->
 
     @respondOk()
 
-asyncTest 'fetch: bad response', () ->
+asyncTest 'fetch: deferred bad response', () ->
     expect 3
 
     @model.fetch().then(null, (error) ->
@@ -68,7 +68,33 @@ asyncTest 'fetch: bad response', () ->
 
     @respondBad()
 
-asyncTest 'save: ok response', () ->
+asyncTest 'fetch: callback ok response', () ->
+    expect 2
+
+    options =
+        success: () ->
+            ok(true, 'Make sure the then callback was called.')
+            ok(arguments.length is 3, 'Make sure there is 3 arguments passed.')
+            start()
+
+    @model.fetch(options)
+
+    @respondOk()
+
+asyncTest 'fetch: callback bad response', () ->
+    expect 2
+
+    options =
+        error: () ->
+            ok(true, 'Make sure the then callback was called.')
+            ok(arguments.length is 3, 'Make sure there is 3 arguments passed.')
+            start()
+
+    @model.fetch(options)
+
+    @respondBad()
+
+asyncTest 'save: deferred ok response', () ->
     expect 3
 
     deferred = @model.save().then((result) ->
@@ -80,7 +106,7 @@ asyncTest 'save: ok response', () ->
 
     @respondOk()
 
-asyncTest 'save: bad response', () ->
+asyncTest 'save: deferred bad response', () ->
     expect 3
 
     @model.save().then(null, (error) ->
@@ -92,7 +118,60 @@ asyncTest 'save: bad response', () ->
 
     @respondBad()
 
-asyncTest 'destroy: ok response', () ->
+asyncTest 'save: callback ok response', () ->
+    expect 2
+
+    options =
+        success: () ->
+            ok(true, 'Make sure the then callback was called.')
+            ok(arguments.length is 3, 'Make sure there is 3 arguments passed.')
+            start()
+
+    @model.save(null, null, options)
+
+    @respondOk()
+
+asyncTest 'save: callback bad response', () ->
+    expect 2
+
+    options =
+        error: () ->
+            ok(true, 'Make sure the then callback was called.')
+            ok(arguments.length is 3, 'Make sure there is 3 arguments passed.')
+            start()
+
+    @model.save(null, null, options)
+
+    @respondBad()
+
+asyncTest 'save: backbone api pass object', () ->
+    expect 1
+
+    params =
+        sample: 'sample'
+
+    options =
+        success: (model) ->
+            ok(model.get('sample') is 'sample', 'make sure the data passed was said.')
+            start()
+
+    @model.save(params, options)
+
+    @respondOk()
+
+asyncTest 'save: backbone api pass key and value', () ->
+    expect 1
+
+    options =
+        success: (model) ->
+            ok(model.get('sample') is 'sample', 'make sure the data passed was said.')
+            start()
+
+    @model.save('sample', 'sample', options)
+
+    @respondOk()
+
+asyncTest 'destroy: deferred ok response', () ->
     expect 3
 
     deferred = @model.destroy().then((result) ->
@@ -104,7 +183,7 @@ asyncTest 'destroy: ok response', () ->
 
     @respondOk()
 
-asyncTest 'destroy: bad response', () ->
+asyncTest 'destroy: deferred bad response', () ->
     expect 3
 
     @model.destroy().then(null, (error) ->
@@ -113,5 +192,31 @@ asyncTest 'destroy: bad response', () ->
         ok(error instanceof Backbone.Deferred.RejectModel, 'Make sure the arugment is a RejectModel object.')
         start()
     )
+
+    @respondBad()
+
+asyncTest 'destroy: callback ok response', () ->
+    expect 2
+
+    options =
+        success: () ->
+            ok(true, 'Make sure the then callback was called.')
+            ok(arguments.length is 3, 'Make sure there is 3 arguments passed.')
+            start()
+
+    @model.destroy(options)
+
+    @respondOk()
+
+asyncTest 'destroy: callback bad response', () ->
+    expect 2
+
+    options =
+        error: () ->
+            ok(true, 'Make sure the then callback was called.')
+            ok(arguments.length is 3, 'Make sure there is 3 arguments passed.')
+            start()
+
+    @model.destroy(options)
 
     @respondBad()
