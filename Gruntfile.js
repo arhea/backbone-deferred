@@ -8,15 +8,35 @@ module.exports = function(grunt) {
         },
 
         coffee: {
-            compile: {
+            dist: {
                 files: {
                     'backbone-deferred-jquery.js': [
-                        'src/deferred.coffee',
-                        'src/jquery/*'
+                        'src/backbone-deferred.coffee',
+                        'src/reject.coffee',
+                        'src/resolve.coffee',
+                        'src/jquery/*.coffee',
+                        'src/model.coffee',
+                        'src/collection.coffee'
                     ],
                     'backbone-deferred-q.js': [
-                        'src/deferred.coffee',
-                        'src/q/*'
+                        'src/backbone-deferred.coffee',
+                        'src/reject.coffee',
+                        'src/resolve.coffee',
+                        'src/q/*.coffee',
+                        'src/model.coffee',
+                        'src/collection.coffee'
+                    ]
+                }
+            },
+            tests: {
+                files: {
+                    'tests/tests/tests-jquery.js': [
+                        'tests/tests/core/*.coffee',
+                        'tests/tests/jquery/*.coffee'
+                    ],
+                    'tests/tests/tests-q.js': [
+                        'tests/tests/core/*.coffee',
+                        'tests/tests/q/*.coffee'
                     ]
                 }
             }
@@ -37,7 +57,11 @@ module.exports = function(grunt) {
         watch: {
             src: {
                 files: ['src/**/*.coffee'],
-                tasks: ['coffee'],
+                tasks: ['coffee:dist'],
+            },
+            tests: {
+                files: ['tests/**/*.coffee'],
+                tasks: ['coffee:tests'],
             }
         }
 
