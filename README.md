@@ -44,57 +44,57 @@ model.fetch().then(function(result) {
 ```
 
 ###Documentation
-BackboneDeferred supports both the jQuery promise implementation and the Q promise implementation. I will use `.done` and `.fail` in the documentation but for Q these are one method, `.then(doneCallback, failCallback)`. In order to be compliant across libaries the first parameter is an array which contains all the paramters passed to the Backbone callback.
+Backbone.Deferred supports both the jQuery promise implementation and the Q promise implementation. I will use `.done` and `.fail` in the documentation but for Q these are one method, `.then(doneCallback, failCallback)`. In order to be compliant across libaries the first parameter is an array which contains all the paramters passed to the Backbone callback.
 
-**BackboneDeferred.Model.fetch(*options*)**
-* .done([model, response, options])
-    * model - instance of the model
-    * response - the response from the server
-    * options - the options passed to the function
-* .fail([model, xhr, options])
-    * model - instance of the model
-    * xhr - the jQXhr object
-    * options - the options passed to the function
+**Backbone.Deferred.Model.fetch(*options*)**
+* .done(result)
+    * result.model - instance of the model
+    * result.response - the response from the server
+    * result.options - the options passed to the function
+* .fail(error)
+    * error.model - instance of the model
+    * error.xhr - the jQXhr object
+    * error.options - the options passed to the function
 
-**BackboneDeferred.Model.save(*key*, *val*, *options*)**
-* .done([model, response, options])
-    * model - instance of the model
-    * response - the response from the server
-    * options - the options passed to the function
-* .fail([model, xhr, options])
-    * model - instance of the model
-    * xhr - the jQXhr object
-    * options - the options passed to the function
+**Backbone.Deferred.Model.save(*key*, *val*, *options*)**
+* .done(result)
+    * result.model - instance of the model
+    * result.response - the response from the server
+    * result.options - the options passed to the function
+* .fail(error)
+    * error.model - instance of the model
+    * error.xhr - the jQXhr object
+    * error.options - the options passed to the function
 
-**BackboneDeferred.Model.save(*attributes*, *options*)**
-* .done([model, response, options])
-    * model - instance of the model
-    * response - the response from the server
-    * options - the options passed to the function
-* .fail(model, xhr, options])
-    * model - instance of the model
-    * xhr - the jQXhr object
-    * options - the options passed to the function
+**Backbone.Deferred.Model.save(*attributes*, *options*)**
+* .done(result)
+    * result.model - instance of the model
+    * result.response - the response from the server
+    * result.options - the options passed to the function
+* .fail(error)
+    * error.model - instance of the model
+    * error.xhr - the jQXhr object
+    * error.options - the options passed to the function
 
-**BackboneDeferred.Model.destroy(*options*)**
-* .done([model, response, options])
-    * model - instance of the model
-    * response - the response from the server
-    * options - the options passed to the function
-* .fail([model, xhr, options])
-    * model - instance of the model
-    * xhr - the jQXhr object
-    * options - the options passed to the function
+**Backbone.Deferred.Model.destroy(*options*)**
+* .done(result)
+    * result.model - instance of the model
+    * result.response - the response from the server
+    * result.options - the options passed to the function
+* .fail(error)
+    * error.model - instance of the model
+    * error.xhr - the jQXhr object
+    * error.options - the options passed to the function
 
-**BackboneDeferred.Collection.fetch(*options*)**
-* .done([collection, response, options])
-    * collection - instance of the collection
-    * response - the response from the server
-    * options - the options passed to the function
-* .fail([model, xhr, options])
-    * collection - instance of the collection
-    * xhr - the jQXhr object
-    * options - the options passed to the function
+**Backbone.Deferred.Collection.fetch(*options*)**
+* .done(result)
+    * result.collection - instance of the collection
+    * result.response - the response from the server
+    * result.options - the options passed to the function
+* .fail(error)
+    * result.collection - instance of the collection
+    * result.xhr - the jQXhr object
+    * result.options - the options passed to the function
 
 ###Requirements
 * Backbone
