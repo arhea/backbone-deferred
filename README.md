@@ -1,4 +1,5 @@
-##Backbone Deferred[![Build Status](https://travis-ci.org/arhea/backbone-deferred.png)](https://travis-ci.org/arhea/backbone-deferred)
+##Backbone Deferred
+[![Build Status](https://travis-ci.org/arhea/backbone-deferred.png)](https://travis-ci.org/arhea/backbone-deferred)
 This library converts models and collections to use the deferred pattern. So instead of returning the raw jQuery XHR object from a fetch, save, or destroy. This library allows you to access all the same functionality provided by the success and error callbacks with the nice deferred pattern.
 
 ```javascript
