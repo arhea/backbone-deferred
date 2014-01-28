@@ -1,4 +1,4 @@
-class Backbone.Deferred.Collection extends Backbone.Model
+class Backbone.Deferred.Collection extends Backbone.Collection
 
     fetch: (options = {}) ->
 
