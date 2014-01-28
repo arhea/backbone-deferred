@@ -311,6 +311,6 @@
 
     return Collection;
 
-  })(Backbone.Model);
+  })(Backbone.Collection);
 
 }).call(this);
