@@ -1,3 +1,18 @@
+(function(root, factory) {
+
+  // Checking if backbone is defined as amd module
+  if (typeof define === 'function' && define.amd) {
+    define(['backbone', 'q'], function() {
+      factory(root);
+    });
+
+  // If not, business as usual
+  } else {
+    factory(root);
+  }
+
+}(this, function(root) {
+
 (function() {
   var root;
 
@@ -132,7 +147,7 @@
 (function() {
   Backbone.Deferred.Promise = (function() {
     function Promise() {
-      this.deferred = $.Deferred();
+      this.deferred = Q.defer();
     }
 
     Promise.prototype.get = function() {
@@ -150,7 +165,7 @@
     };
 
     Promise.prototype.promise = function() {
-      return this.deferred.promise();
+      return this.deferred.promise;
     };
 
     return Promise;
@@ -314,3 +329,5 @@
   })(Backbone.Collection);
 
 }).call(this);
+
+});
