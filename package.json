@@ -1,25 +1,26 @@
 {
-  "name": "backbone-deferred",
-  "description": "Converts Backbone models and collections to using deferreds. Has implementations for jQuery and Q",
+  "name": "backbone-deferred-amd",
+  "description": "AMD-compliant version of backbone-deferred",
   "keywords": [
     "javascript",
     "deferred",
     "q",
     "jquery",
     "backbone",
-    "plugin"
+    "plugin",
+    "amd"
   ],
-  "author": "Alex Rhea",
+  "author": "Luismahou",
   "version": "0.4.0",
   "license": "MIT",
   "engines": {
     "node": ">=0.8.0"
   },
-  "homepage": "https://github.com/arhea/backbone-deferred",
-  "bugs": "https://github.com/arhea/backbone-deferred/issues",
+  "homepage": "https://github.com/Luismahou/backbone-deferred",
+  "bugs": "https://github.com/Luismahou/backbone-deferred/issues",
   "repository": {
     "type": "git",
-    "url": "git://github.com/arhea/backbone-deferred.git"
+    "url": "git://github.com/Luismahou/backbone-deferred.git"
   },
   "devDependencies": {
     "grunt": "~0.4.2",
