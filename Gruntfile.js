@@ -42,6 +42,17 @@ module.exports = function(grunt) {
             }
         },
 
+        concat: {
+            jquery: {
+                src: ['src/amd-jquery-init.js', 'backbone-deferred-jquery.js', 'src/amd-end.js'],
+                dest: 'backbone-deferred-jquery-amd.js'
+            },
+            q: {
+                src: ['src/amd-q-init.js', 'backbone-deferred-q.js', 'src/amd-end.js'],
+                dest: 'backbone-deferred-q-amd.js'
+            }
+        },
+
         uglify: {
             options: {
                 report: 'min'
@@ -67,12 +78,13 @@ module.exports = function(grunt) {
 
     });
 
+    grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-coffee');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
     grunt.loadNpmTasks('grunt-contrib-qunit');
 
-    grunt.registerTask('default', ['coffee', 'uglify', 'qunit']);
+    grunt.registerTask('default', ['coffee', 'concat', 'uglify', 'qunit']);
     grunt.registerTask('test', ['coffee', 'qunit']);
 
 };
