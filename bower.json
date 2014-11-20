@@ -1,19 +1,20 @@
 {
-  "name": "backbone-deferred",
-  "version": "0.4.0",
-  "homepage": "https://github.com/arhea/backbone-deferred",
+  "name": "backbone-deferred-amd",
+  "version": "0.4.1",
+  "homepage": "https://github.com/Luismahou/backbone-deferred",
   "authors": [
-    "Alex Rhea <alex.rhea@gmail.com>"
+    "Luismahou <luismahou@gmail.com>"
   ],
-  "description": "An implementation of Backbone Model and Collection using the promise pattern rather than passing callback options. Supports popular deferred libraries like Q and jquery.",
-  "main": "backbone-deferred-jquery.js",
+  "description": "AMD-compliant version of backbone-deferred",
+  "main": "backbone-deferred-jquery-amd.js",
   "keywords": [
     "jquery",
     "backbone",
     "plugin",
     "q",
     "promise",
-    "deferred"
+    "deferred",
+    "amd"
   ],
   "license": "MIT",
   "ignore": [
@@ -28,8 +29,8 @@
   ],
   "dependencies": {
     "backbone": "~1.1.0",
-    "jquery": "~2.0.3",
+    "jquery": "~2.1.0",
     "q": "~0.9.7",
-    "underscore": "~1.5.2"
+    "underscore": "~1.6.0"
   }
 }
